@@ -1,6 +1,6 @@
-# Goalsetter MERN app
+# Hollaboration HMS App
 
-This is the goalsetter app from the [Learn the MERN Stack](https://www.youtube.com/watch?v=-0exw-9YJBo) series on YouTube.
+Credits to (https://www.youtube.com/watch?v=-0exw-9YJBo).
 
 ## Usage
 
