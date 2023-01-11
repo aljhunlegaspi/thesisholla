@@ -9,6 +9,7 @@ import { logout, reset } from '../features/auth/authSlice'
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
+import { Link } from 'react-router-dom';
 export default function Header2() {
 
     const navigate = useNavigate()
@@ -43,12 +44,15 @@ return (
                 :
                 (
                     <>
-                        <IconButton>
+                        <Link to='/'> <IconButton>
                             <LoginIcon/> Login
                         </IconButton>
+                        </Link>
+                        <Link to='/guestregister'> 
                         <IconButton>
                             <HowToRegIcon/> Register
                         </IconButton>
+                        </Link>
                     </>
                 )
             }
