@@ -8,14 +8,14 @@ import { CardActionArea } from '@mui/material';
 import { useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useSelector, useDispatch } from 'react-redux'
-import { getGoals, reset } from '../../features/goals/goalSlice'
+import { deleteGoal, getGoals, reset } from '../../features/goals/goalSlice'
 import Spinner from '../../components/Spinner';
 import AddRoom from '../../components/CreateRoom';
 import Modal from 'react-modal';
 import useModal from '../../features/UseModal';
 import Sidebar from '../../components/SideBar';
 import AddBoxIcon from '@mui/icons-material/AddBox';
-
+import EditRoom from '../../components/EditRoom';
 export default function Rooms() {
   const { isOpen, openModal, closeModal } = useModal();
 
@@ -23,6 +23,7 @@ export default function Rooms() {
   const dispatch = useDispatch()
   
   const { user } = useSelector((state) => state.auth)
+
   const { goals, isLoading, isError, message } = useSelector(
     (state) => state.goals
   )
@@ -129,9 +130,11 @@ export default function Rooms() {
                 <td>{goal.createdAt}</td>
                 <td>{goal.updatedAt}</td>
                 <td>{goal.user}</td>
-                <td className="d-flex justify-content-around gap-2">
+                <td className="d-flex gap-2">
                   <button className="btn btn-warning" onClick={openModal} > Edit </button>
-                  <button className="btn btn-danger"> Delete </button>
+                  <button className="btn btn-danger"
+                  onClick={() => dispatch(deleteGoal(goal._id))}
+                  > Delete </button>
                 </td>
               </tr>
             ))}
@@ -153,7 +156,7 @@ export default function Rooms() {
             left: '50%',
             transform: 'translate(-50%, -50%)',
           }}}>
-
+          <EditRoom/>
       </Modal>
 
     </Container>

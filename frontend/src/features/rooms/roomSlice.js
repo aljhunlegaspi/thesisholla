@@ -47,6 +47,24 @@ export const getRooms = createAsyncThunk(
   }
 )
 
+export const updateRoom = createAsyncThunk(
+  'rooms/update',
+  async (roomData, thunkAPI) => {
+    try {
+      const token = thunkAPI.getState().auth.user.token;
+      return await roomService.updateRoom(roomData, token);
+    } catch (error) {
+      const message =
+        (error.response &&
+          error.response.data &&
+          error.response.data.message) ||
+        error.message ||
+        error.toString();
+      return thunkAPI.rejectWithValue(message);
+    }
+  }
+);
+
 // Delete user room
 export const deleteRoom = createAsyncThunk(
   'rooms/delete',
@@ -96,6 +114,20 @@ export const roomSlice = createSlice({
         state.rooms = action.payload
       })
       .addCase(getRooms.rejected, (state, action) => {
+        state.isLoading = false
+        state.isError = true
+        state.message = action.payload
+      })
+      .addCase(updateRoom.pending, (state) => {
+        state.isLoading = true
+      })
+      .addCase(updateRoom.fulfilled, (state, action) => {
+        state.isLoading = false
+        state.isSuccess = true
+        const index = state.rooms.findIndex((room) => room._id === action.payload._id);
+        state.rooms[index] = action.payload;
+      })
+      .addCase(updateRoom.rejected, (state, action) => {
         state.isLoading = false
         state.isError = true
         state.message = action.payload

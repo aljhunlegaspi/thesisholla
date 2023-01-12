@@ -10,6 +10,7 @@ import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
 import { Link } from 'react-router-dom';
+import Holla250 from '../assets/holla250.png'
 export default function Header2() {
 
     const navigate = useNavigate()
@@ -23,20 +24,17 @@ export default function Header2() {
     }
 
 return (
-<nav className="navbar navbar-fluid navbar-expand navbar-light bg-primary m-0 ">
+<nav className="navbar navbar-expand navbar-light m-0 d-flex justify-content-around"
+style={{backgroundColor: '#000000', color: '#FFFF00'}}>
     <div className="container-fluid">
-        <a className='navbar-brand text-white' href='/'> Holla </a>
+        <img src={Holla250} alt="Holla Logo" style={{height: '50px'}}/>
         <div className="d-flex align-items-center">
             {user ?
                 (
                     <>
-             <Card className="me-3 bg-info text-center" sx={{ maxWidth: 150, width: 150, maxHeight: 40, height: 40 }}>
-            <CardContent>
-            <span > Hello!, {user && user.fname} </span>
-            </CardContent>
-            </Card>
-                    
-                        <button type="button" className="btn btn-light ml-auto" onClick={onLogout}>
+            <span className="text-white me-5"> Hello, {user && user.fname}! </span>
+                        <button type="button" className="btn btn-light ml-auto" onClick={onLogout}
+                        style={{backgroundColor: '#000000', color: '#FFFF00'}}>
                             <LogoutIcon/> Logout
                         </button>
                     </>

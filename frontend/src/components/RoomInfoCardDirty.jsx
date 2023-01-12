@@ -1,23 +1,26 @@
 import * as React from 'react';
 import { Link } from 'react-router-dom';
 import Typography from '@mui/material/Typography';
+import { Button } from '@mui/material';
 import Title from './Title';
 
 
-export default function Deposits() {
+export default function RoomInfoCardDirty() {
   return (
     <React.Fragment>
-      <Title>Clean Rooms</Title>
+      <div className="d-flex flex-column gap-2">
+      <Title>Dirty Rooms</Title>
       <Typography component="p" variant="h4">
-        12
+        6
       </Typography>
       <Typography color="text.secondary" sx={{ flex: 1 }}>
         Total Rooms: 25
       </Typography>
-      <div>
+      <div className="mt-4">
         <Link to="/rooms" color="primary">
-          Manage Rooms
+          <Button variant="contained"> Manage Rooms </Button>
         </Link>
+      </div>
       </div>
     </React.Fragment>
   );

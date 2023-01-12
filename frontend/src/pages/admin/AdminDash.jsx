@@ -11,7 +11,9 @@ import Container from '@mui/material/Container';
 import Grid from '@mui/material/Grid';
 import Paper from '@mui/material/Paper';
 import { Icon, Link } from '@mui/material';
-import Deposits from '../../components/Deposits';
+import RoomInfoCardClean from '../../components/RoomInfoCardClean';
+import RoomInfoCardDirty from '../../components/RoomInfoCardDirty';
+import TasksInfoActive from '../../components/TasksInfoCard';
 import Orders from '../../components/Orders';
 import Spinner from '../../components/Spinner';
 
@@ -93,7 +95,7 @@ function DashboardContent() {
                                         height: 240,
                                     }}
                                 >
-                                    <Deposits />
+                                    <RoomInfoCardClean />
                                 </Paper>
                             </Grid>
                             {/* Recent Deposits */}
@@ -106,7 +108,20 @@ function DashboardContent() {
                                         height: 240,
                                     }}
                                 >
-                                    <Deposits />
+                                    <RoomInfoCardDirty />
+                                </Paper>
+                            </Grid>
+
+                            <Grid item xs={12} md={4} lg={3}>
+                                <Paper
+                                    sx={{
+                                        p: 2,
+                                        display: 'flex',
+                                        flexDirection: 'column',
+                                        height: 240,
+                                    }}
+                                >
+                                    <TasksInfoActive />
                                 </Paper>
                             </Grid>
                             {/* Recent Orders */}
