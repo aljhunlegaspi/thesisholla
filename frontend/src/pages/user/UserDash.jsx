@@ -42,7 +42,7 @@ function UserDash() {
           <h1 className="text-center">Welcome, {user && user.fname +' ' + user.lname} </h1>
           <div className="d-flex flex-wrap justify-content-center my-3">
 
-          <Link to='' className="text-decoration-none w-100"> 
+          <Link to='/requests' className="text-decoration-none w-100"> 
           <Button variant="success" className="mx-2 my-2 col-12 text-wrap"> 
               Requests
             </Button>
