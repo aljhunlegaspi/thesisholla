@@ -1,20 +1,21 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
-import { ToastContainer } from 'react-toastify'
-import 'react-toastify/dist/ReactToastify.css'
 import Header2 from './components/Header2'
 import Dashboard from './pages/Dashboard'
 import Login from './pages/Login'
-import AdminRegister from './pages/admin/AdminRegister'
-import UserRegister from './pages/user/UserRegister'
-import AdminOnlyRoute from './features/auth/privateroutes'
-import UserDash from '../src/pages/user/UserDash'
-import 'bootstrap/dist/css/bootstrap.min.css';
-import CreateTask from './pages/user/CreateTask'
 
+// import AdminOnlyRoute from './features/auth/privateroutes' not tested
+import AdminRegister from './pages/admin/AdminRegister'
 import Rooms from './pages/admin/Rooms'
 import Tasks from './pages/admin/Tasks'
 
+import UserRegister from './pages/user/UserRegister'
+import CreateTask from './pages/user/CreateTask'
 import OrderFood from './pages/user/OrderFood'
+
+
+import { ToastContainer } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
   

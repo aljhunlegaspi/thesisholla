@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import LogoutIcon from '@mui/icons-material/Logout';
 import LoginIcon from '@mui/icons-material/Login';
 import HowToRegIcon from '@mui/icons-material/HowToReg';
@@ -8,6 +7,8 @@ import { useSelector, useDispatch } from 'react-redux'
 import { logout, reset } from '../features/auth/authSlice'
 import { Link } from 'react-router-dom';
 import Holla250 from '../assets/holla250.png'
+
+
 export default function Header2() {
 
     const navigate = useNavigate()
@@ -21,10 +22,10 @@ export default function Header2() {
     }
 
 return (
-<nav className="navbar navbar-expand navbar-light m-0 d-flex justify-content-around"
+<nav className="navbar navbar-expand navbar-expand-sm navbar-light m-0 d-flex justify-content-around"
 style={{backgroundColor: '#000000'}}>
     <div className="container-fluid">
-    <Link to='/'><img src={Holla250} alt="Holla Logo" style={{height: '50px'}}/></Link>
+    <Link to='/'> <img src={Holla250} alt="Holla Logo" style={{height: '50px'}}/></Link>
         <div className="d-flex align-items-center">
             {user ?
                 (

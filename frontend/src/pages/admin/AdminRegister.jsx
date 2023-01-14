@@ -108,10 +108,10 @@ return (
               <Grid item xs={12} sm={6}>
                 <TextField
                   autoComplete="given-name"
-                  name="firstName"
+                  name="fname"
                   required
                   fullWidth
-                  id="firstName"
+                  id="fname"
                   label="First Name"
                   value={fname}
                   onChange={onChange}
@@ -122,9 +122,9 @@ return (
                 <TextField
                   required
                   fullWidth
-                  id="lastName"
+                  id="lname"
                   label="Last Name"
-                  name="lastName"
+                  name="lname"
                   autoComplete="family-name"
                   value={lname}
                   onChange={onChange}

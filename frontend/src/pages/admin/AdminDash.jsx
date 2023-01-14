@@ -1,16 +1,16 @@
-import { useState, useEffect } from 'react';
+import { useEffect } from 'react';
 import { Link as Lynk, useNavigate } from 'react-router-dom'
 import { useSelector, useDispatch } from 'react-redux'
-import { logout, reset } from '../../features/auth/authSlice'
+import { reset } from '../../features/auth/authSlice'
 
-import { styled, createTheme, ThemeProvider } from '@mui/material/styles';
+import { createTheme, ThemeProvider } from '@mui/material/styles';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import Grid from '@mui/material/Grid';
 import Paper from '@mui/material/Paper';
-import { Icon, Link } from '@mui/material';
+import { Link } from '@mui/material';
 import RoomInfoCardClean from '../../components/RoomInfoCardClean';
 import RoomInfoCardDirty from '../../components/RoomInfoCardDirty';
 import TasksInfoActive from '../../components/TasksInfoCard';

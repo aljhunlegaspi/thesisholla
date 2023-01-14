@@ -1,68 +1,70 @@
-import GoalForm from '../../components/GoalForm'       
-
 import { useEffect } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { Container, Row, Col, Button } from "react-bootstrap";
+import { Link, useNavigate } from 'react-router-dom'
 import { useSelector, useDispatch } from 'react-redux'
-import GoalItem from '../../components/GoalItem'
-import Spinner from '../../components/Spinner'
-import { getGoals, reset } from '../../features/goals/goalSlice'
+import Spinner from '../../components/Spinner';
+import { reset } from '../../features/goals/goalSlice'
+function UserDash() {
 
-function Dashboard() {
-  const navigate = useNavigate()
-  const dispatch = useDispatch()
+    const navigate = useNavigate()
+    const dispatch = useDispatch()
+    const { user } = useSelector((state) => state.auth)
+    const { /* goals, */ isLoading, isError, message } = useSelector(
+        (state) => state.goals
+      )
 
-  const { user } = useSelector((state) => state.auth)
-  const { goals, isLoading, isError, message } = useSelector(
-    (state) => state.goals
-  )
 
-  useEffect(() => {
-    if (isError) {
-      console.log(message)
-    }
 
-    if (!user) {
-      navigate('/login')
-    }
-
-    dispatch(getGoals())
-
-    return () => {
-      dispatch(reset())
-    }
-  }, [user, navigate, isError, message, dispatch])
-
-  if (isLoading) {
-    return <Spinner />
-  }
+    useEffect(() => {
+        if (isError) {
+          console.log(message)
+        }
+    
+        if (!user) {
+          navigate('/login')
+        }
+    
+        // dispatch(getGoals())
+    
+        return () => {
+          dispatch(reset())
+        }
+      }, [user, navigate, isError, message, dispatch])
+    
+      if (isLoading) {
+        return <Spinner />
+      }
 
   return (
-    <>
-      <section className='heading'>
-        <p>Create a task</p>
-      </section>
+    <Container className="my-5">
+      <Row className="justify-content-center">
+        <Col xs={12} md={8} className="justify-content-center">
+          <h1 className="text-center">Welcome, {user && user.fname +' ' + user.lname} </h1>
+          <div className="d-flex flex-wrap justify-content-center my-3">
 
-      <GoalForm />
+          <Link to='' className="text-decoration-none w-100"> 
+          <Button variant="success" className="mx-2 my-2 col-12 text-wrap"> 
+              Requests
+            </Button>
+            </Link>
 
-      <section className='heading'>
-        <p>Previous Requests</p>
-      </section>
-      <section className='content'>
-        {goals.length > 0 ? (
-          <div className='goals'>
-            {goals.map((goal) => (
-              <GoalItem key={goal._id} goal={goal} />
-            ))}
+            <Link  to='' className="text-decoration-none w-100">
+                <Button variant="success" className="mx-2 col-12 my-2 text-wrap">
+              Billing Account Information
+            </Button>
+            </Link>
+
+            <Link  to='' className="text-decoration-none w-100">
+            <Button variant="success" className="mx-2 my-2 col-12 text-wrap">
+              Order Food
+            </Button>
+            </Link>
+
           </div>
-        ) : (
-          <h3>You have yet to create a request.</h3>
-        )}
-      </section>
-    </>
-  )
+        </Col>
+      </Row>
+    </Container>
+  );
 }
 
-export default Dashboard
-
-
-
+export default UserDash;
